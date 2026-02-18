@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2026 a las 16:19:59
+-- Tiempo de generación: 18-02-2026 a las 16:29:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -49,6 +49,17 @@ CREATE TABLE `cliente` (
   `fecha_registro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `nombre`, `email`, `telefono`, `fecha_registro`) VALUES
+(1, 'Jorge Luis Borges', 'bvjhtvui@jkgkguidgfh.com', '6674358794', '2026-02-12'),
+(2, 'Alex Syntek', 'estasbien@chavito.com', '6675478953', '2026-02-25'),
+(3, 'Miku', 'support@mikucare.com', '6678953340', '2026-02-27'),
+(4, 'Mario Bros', 'mario@noa.nintendo.com', '929-556-2746', '2026-02-24'),
+(5, 'Jorge Quintero', 'wercvgter@gcvegrv', '667654644', '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +73,17 @@ CREATE TABLE `empleado` (
   `puesto` varchar(500) NOT NULL,
   `email` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`id_empleado`, `id_hotel`, `nombre`, `puesto`, `email`) VALUES
+(1, 1, 'Santiago Juarez Gonzales', 'sustituto de ayudante de conserje de apoyo en entrenamiento', 'santiago.juarez24@cetis107.edu.mx'),
+(2, 1, 'Dwight Schrute', 'Asistente de gerente Regional', 'investor.relations@churchdwight.com'),
+(3, 2, 'Holly flax', 'Recursos Humanos', 'adelmo.meza24@cetis107.edu.mx'),
+(4, 3, ' Montgomery \"Lightning\" McQueen', 'Director Ejecutivo de Transporte de Alta Velocidad', 'rodrigo.jacobo24@cetis107.edu.mx'),
+(5, 1, 'Dewey', 'Atención al Cliente', 'dewey.24@cetis107.ecu.mx\r\n');
 
 -- --------------------------------------------------------
 
@@ -78,6 +100,17 @@ CREATE TABLE `habitacion` (
   `id_hotel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Volcado de datos para la tabla `habitacion`
+--
+
+INSERT INTO `habitacion` (`id_habitacion`, `numero`, `tipo`, `precio_noche`, `estado`, `id_hotel`) VALUES
+(2, 666, 'Noche con la fruta prohibiida', 666.66, 'Ocupada', 2),
+(3, 68, 'Sencilla', 700, 'Libre', 1),
+(4, 512, 'Deluxe plus máx', 3200, 'Libre', 2),
+(5, 420, 'Cuarto botanico', 420.67, 'Ocupada', 1),
+(6, 609, 'Suite Matrimonial', 1000.68, 'Libre', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +123,15 @@ CREATE TABLE `hotel` (
   `ciudad` varchar(50) NOT NULL,
   `telefono` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `hotel`
+--
+
+INSERT INTO `hotel` (`id_hotel`, `nombre`, `ciudad`, `telefono`) VALUES
+(1, 'holymoly inn', 'culiacan sinaloa', '66757570040'),
+(2, 'Hollywood otel', 'culiacan sinaloa', '6674121960'),
+(3, 'uno+uno', 'culiacan sinaloa', '6673348475');
 
 -- --------------------------------------------------------
 
@@ -123,6 +165,22 @@ CREATE TABLE `reserva` (
   `estado_reserva` varchar(1500) NOT NULL,
   `fecha_creacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`id_reserva`, `id_cliente`, `id_habitacion`, `fecha_entrada`, `fecha_salida`, `num_huespedes`, `estado_reserva`, `fecha_creacion`) VALUES
+(1, 1, 2, '2026-02-18', '2026-02-28', 2, 'vigente', '2026-02-18'),
+(2, 2, 3, '2023-02-01', '2024-02-01', 1, 'caducada', '2023-02-01'),
+(3, 3, 4, '2020-02-01', '2026-02-28', 1, 'vigente', '2020-02-01'),
+(4, 2, 3, '2025-12-24', '2025-12-31', 4, 'Caducado', '1986-02-12'),
+(5, 3, 4, '2026-02-01', '2026-02-04', 2, 'Caducado', '2026-01-07'),
+(6, 5, 5, '2023-02-15', '2023-02-22', 1, 'Caducado', '2026-01-25'),
+(7, 4, 6, '2026-02-25', '2026-02-27', 2, 'Vigente', '2026-02-14'),
+(8, 1, 3, '2026-04-20', '2026-04-23', 1, 'Vigente', '2026-02-18'),
+(9, 2, 4, '2026-01-19', '2026-01-23', 23, 'Caducada', '1897-06-16'),
+(10, 3, 3, '2026-09-09', '2026-09-16', 1, 'Vigente', '2026-02-28');
 
 -- --------------------------------------------------------
 
@@ -229,25 +287,25 @@ ALTER TABLE `atencion`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_habitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `hotel`
 --
 ALTER TABLE `hotel`
-  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pago`
@@ -259,7 +317,7 @@ ALTER TABLE `pago`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
